@@ -36,7 +36,7 @@ public class SuperCalculatorTest {
     public void test1(){
 
         String expectedTitle = "Super Calculator";
-        Assert.assertEquals(driver.getTitle(), expectedTitle);
+        Assert.assertEquals(driver.getTitle(), expectedTitle,"Title is different than Super Calculator");
     }
 
     @Test
@@ -52,7 +52,7 @@ public class SuperCalculatorTest {
 
             return isNumeric(landingPage.resultField.getText());
         });
-        Assert.assertEquals(landingPage.resultField.getText(),"16","");
+        Assert.assertEquals(landingPage.resultField.getText(),"16","The result is different than 16");
     }
 
     @Test
@@ -66,7 +66,7 @@ public class SuperCalculatorTest {
         wait.until((ExpectedCondition<Boolean>) d -> {
             return isNumeric(landingPage.resultField.getText());
         });
-        Assert.assertEquals(landingPage.resultField.getText(),"4","16/4 is equal to 4");
+        Assert.assertEquals(landingPage.resultField.getText(),"4","The result is different than 4");
 
         landingPage.firstInput.sendKeys("4");
         landingPage.secondInput.sendKeys("4");
