@@ -6,14 +6,13 @@ version: 2.1
 # See: https://circleci.com/docs/2.0/configuration-reference/#jobs
 jobs:
   build:
-
     docker:
-      - image: cimg/base:stable
-      - image: selenium/standalone-chrome:4.1.4
+      - image: cimg/node:16.13.1-browsers
+        auth:
+          username: mydockerhub-user
+          password: $DOCKERHUB_PASSWORD  # context / project UI env-var reference
 
     steps:
-    
-          
       - checkout
       - run: mkdir test-reports
       - run:
@@ -22,8 +21,7 @@ jobs:
       - run:
           name: Start Selenium
           command: java -jar selenium-server-standalone-3.5.3.jar -log test-reports/selenium.log
-          background: true
-    
+          background: true    
 
 
 # Invoke jobs via workflows
