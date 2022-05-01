@@ -21,9 +21,8 @@ jobs:
       - run:
           name: Start Selenium
           command: java -jar selenium-server-standalone-3.5.3.jar -log test-reports/selenium.log
-          background: true    
-          
-       - run:
+          background: true
+      - run:
           name: Build
           command: mvn -B -DskipTests clean package
       # Then run your tests!
